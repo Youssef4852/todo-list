@@ -1,0 +1,151 @@
+:root {
+  --main-color: #0075ff;
+}
+::selection {
+  background-color: var(--main-color);
+  color: #fff;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #222;
+  color: #fff;
+}
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.todo-app .heading {
+  font-size: 40px;
+  margin: 0 0 20px;
+}
+.todo-app form {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  width: 500px;
+  max-width: 100%;
+}
+.todo-app form input {
+  border: none;
+  padding: 7px 10px;
+  border-radius: 5px;
+  outline: none;
+  flex: 1;
+  display: flex;
+}
+.todo-app form button {
+  padding: 7px 14px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+}
+.todo-app form button:hover {
+  background-color: #006be6;
+}
+.todo-app form button:active {
+  background-color: #4a9eff;
+}
+.todo-app .result {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  max-width: 100%;
+  margin-top: 35px;
+  gap: 15px;
+}
+.todo-app .result .todo {
+  position: relative;
+}
+.todo-app .result .todo-text {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: grab;
+}
+.todo-app .result .todo-text.checked {
+  opacity: 0.7;
+}
+.todo-app .result .todo-text.removed {
+  transform: scale(0);
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
+.todo-app .result .todo-text.checked li {
+  text-decoration: line-through;
+  color: var(--main-color);
+}
+.todo-app .result .todo-text li {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  outline-color: var(--main-color);
+  padding: 1px 5px;
+  cursor: default;
+}
+.todo-app .result .todo-text li[contenteditable='true'] {
+  cursor: text;
+}
+.todo-app .result .todo-text button {
+  border: none;
+  outline: none;
+  background: transparent;
+  min-width: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.todo-app .result .todo-text button i {
+  font-size: 18px;
+  color: #fff;
+  height: 100%;
+  min-width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.todo-app .result .todo-text button i.edit {
+  background: var(--main-color);
+}
+.todo-app .result .todo-text button i.edit:hover {
+  background: #006be6;
+}
+.todo-app .result .todo-text button i.check {
+  background: #4caf50;
+}
+.todo-app .result .todo-text button i.check:hover {
+  background-color: #3a8b3d;
+}
+.todo-app .result .todo-text button i.trash {
+  background: #e91e63;
+}
+.todo-app .result .todo-text button i.trash:hover {
+  background: #b8184d;
+}
+.todo-app .info {
+  background-color: #222;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  padding: 10px 0;
+  color: #999;
+}
