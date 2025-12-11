@@ -2,7 +2,16 @@
 let todoForm = document.querySelector(".todo-app form");
 let todoInput = document.querySelector(".todo-app form input");
 let todoButton = document.querySelector(".todo-app form button");
+let overlay = document.querySelector(".overlay");
+let todoEdit = document.querySelector(".todo-app .todo-edit");
+let todoEditInput = document.querySelector(".todo-edit form input");
+let todoEditClose = document.querySelector(".todo-edit .head .close");
+let todoEditCheck = document.querySelector(".todo-edit .label .check");
+let todoEditForm = document.querySelector(".todo-edit form");
 let todoResult = document.querySelector(".todo-app .result");
+let info = document.querySelector(".todo-app .info span");
+let selectedTodoTextLi = null;
+
 console.log(todoResult);
 
 todoForm.addEventListener("submit", (e) => {
@@ -12,7 +21,7 @@ todoForm.addEventListener("submit", (e) => {
     createResult();
   }
 
-  todoInput.value = "";
+
 });
 
 function createResult() {
@@ -62,14 +71,8 @@ function createResult() {
   // Append Todo Div In Result
   todoResult.appendChild(todo);
 
-  // On Todo Text Li Press Enter On Written
-  todoTextLi.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      todoTextIconCheck.click();
-      todoTextLi.blur();
-      todoTextLi.setAttribute("contenteditable", "false");
-    }
-  });
+  updateInfo()
+  todoInput.value = ''
 
   // On Write More 10 Letter
   todoTextLi.addEventListener("input", () => {
@@ -90,7 +93,7 @@ function createResult() {
   todoTextButton.querySelectorAll("i").forEach((li) => {
     li.addEventListener("click", () => {
       if (li.classList.contains("bx-check")) {
-        handleCheckClick(todoText, todoTextLi, li);
+        handleCheckClick(todoText, li);
       } else if (li.classList.contains("bx-check-circle")) {
         li.classList.replace("bx-check-circle", "bx-check");
         todoText.classList.remove("checked");
@@ -101,43 +104,68 @@ function createResult() {
       if (li.classList.contains("bx-edit")) {
         handleEditClick(todoText, todoTextLi, li);
       } else if (li.classList.contains("bx-save")) {
-        todoTextLi.setAttribute("contenteditable", "false");
         li.classList.replace("bx-save", "bx-edit");
       }
     });
   });
 
-  //   Handle Edit Click
-  function handleEditClick(todoText, todoTextLi, li) {
-    todoTextLi.setAttribute("contenteditable", "true");
-    todoTextLi.focus();
-    todoText.classList.remove("checked");
-    li.classList.replace("bx-edit", "bx-save");
-    document
-      .querySelector(".todo-text button .bx-check-circle")
-      .classList.replace("bx-check-circle", "bx-check");
-  }
+  overlay.addEventListener("click", handleCloseTodoEdit);
+  todoEditClose.addEventListener("click", handleCloseTodoEdit);
+  todoEditCheck.addEventListener("click", () => {
+    selectedTodoTextLi.textContent = todoEditInput.value;
+    handleCloseTodoEdit();
+  });
 
   //   Handle Check Click
-  function handleCheckClick(todoText, todoTextLi, li) {
+  function handleCheckClick(todoText, li) {
     todoText.classList.add("checked");
-    todoTextLi.setAttribute("contenteditable", "false");
-    document
-      .querySelector(".todo-text button .edit")
-      .classList.replace("bx-save", "bx-edit");
+    let saveIcon = todoTextButton.querySelector(".bx-save");
+    if (saveIcon) saveIcon.classList.replace("bx-save", "bx-edit");
     li.classList.replace("bx-check", "bx-check-circle");
   }
 
-  function handleRemoveClick(todoText, todo) {
-    todoText.classList.toggle("removed");
-
-    todoText.addEventListener("transitionend", () => {
-      todo.remove();
-      info.innerHTML = todoResult.children.length;
-    });
-  }
   // Set Info Span Lenght Of Todo List
-  let info = document.querySelector(".todo-app .info span");
+}
 
+todoEditForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  overlay.style.display = "none";
+  todoEdit.style.display = "none";
+  document
+    .querySelector(".todo-text button .bx-save")
+    .classList.replace("bx-save", "bx-edit");
+  selectedTodoTextLi.textContent = todoEditInput.value;
+});
+
+//   Handle Edit Click
+function handleEditClick(todoText, todoTextLi, li) {
+  selectedTodoTextLi = todoTextLi;
+  overlay.style.display = "block";
+  todoEdit.style.display = "block";
+  todoEditInput.value = todoTextLi.textContent;
+  todoEditInput.focus();
+  todoText.classList.remove("checked");
+  li.classList.replace("bx-edit", "bx-save");
+  document
+    .querySelector(".todo-text button .bx-check-circle")
+    .classList.replace("bx-check-circle", "bx-check");
+}
+function handleCloseTodoEdit() {
+  overlay.style.display = "none";
+  todoEdit.style.display = "none";
+  let saveIcon = document.querySelector(".todo-text button .bx-save");
+  if (saveIcon) saveIcon.classList.replace("bx-save", "bx-edit");
+}
+
+function handleRemoveClick(todoText, todo) {
+  todoText.classList.toggle("removed");
+
+  todoText.addEventListener("transitionend", () => {
+    todo.remove();
+    info.innerHTML = todoResult.children.length;
+  });
+}
+
+function updateInfo() {
   info.innerHTML = todoResult.children.length;
 }

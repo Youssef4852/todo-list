@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,17 +14,32 @@
       rel="stylesheet"
     />
     <title>Youssef</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <div class="todo-app">
-      <h2 class="heading" >Todo List</h2>
+      <h2 class="heading">Todo List</h2>
       <form>
-        <input type="text" placeholder="Enter Your Text" />
+        <input type="text" autocomplete="off" placeholder="Enter Your Text" />
         <button type="submit">Send</button>
       </form>
 
-      <div class="result" ></div>
+      <div class="result"></div>
+
+      <div class="overlay"></div>
+      <div class="todo-edit">
+        <div class="head">
+          <h2>Todo Edit</h2>
+          <i class="bx bx-x close"></i>
+        </div>
+        <form>
+          <label for="todo-edit">Todo Name:</label>
+          <div class="fields">
+            <input type="text" id="todo-edit" value="Hello" />
+            <button type="submit">Save</button>
+          </div>
+        </form>
+      </div>
 
       <p class="info">The Todo List Craeted Is <span>0</span></p>
     </div>
