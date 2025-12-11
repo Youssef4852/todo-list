@@ -158,7 +158,8 @@ body {
   z-index: 9998;
   display: none;
 }
-.todo-edit {
+.todo-edit,
+.todo-remove {
   display: none;
   position: absolute;
   background-color: #fff;
@@ -170,23 +171,27 @@ body {
   color: #000;
   transform: translate(-50%, -50%);
 }
-.todo-edit .head {
+.todo-edit .head,
+.todo-remove .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
 }
-.todo-edit .head .close {
+.todo-edit .head .close,
+.todo-remove .head .close {
  font-size: 30px;
  cursor: pointer;
  border-radius: 50%;
  padding: 3px;
 }
-.todo-edit .head .close:hover {
+.todo-edit .head .close:hover,
+.todo-remove .head .close:hover {
   background-color: rgba(0, 0, 0, .050);
 }
-.todo-edit .head .close:active {
+.todo-edit .head .close:active,
+.todo-remove .head .close:active {
   background-color: rgba(0, 0, 0, 0);
 }
 .todo-edit form {
@@ -211,4 +216,40 @@ body {
 }
 .todo-edit form .fields button {
   min-width: 75px;  
+}
+.todo-remove {
+  min-width: 540px;
+}
+.todo-remove .btns {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.todo-remove .btns button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+}
+.todo-remove .btns button.exit {
+  background-color: #0075ff;
+}
+.todo-remove .btns button.remove {
+  background-color: #e91e63;
+}
+.todo-remove .btns button.exit:hover {
+  background-color: #006be6;
+}
+.todo-remove .btns button.exit:active {
+  background-color: #4a9eff;
+}
+.todo-remove .btns button.remove:hover {
+  background-color: #c91752;
+}
+.todo-remove .btns button.remove:active {
+  background-color: #fa4a84;
 }
