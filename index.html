@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Youssef</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <div class="todo-app">
-      <h2 class="heading">Todo List</h2>
-      <form>
+
+<!-- ======== HEAD OF PROJECT ======== -->
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Fonts & Icons -->
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+        <title>Youssef</title>
+        <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<!-- ======== END HEAD ======== -->
+
+<body>
+
+<!-- ============ TODO APP ============ -->
+<div class="todo-app">
+
+<h2 class="heading">Todo List</h2>
+
+<form>
         <input type="text" autocomplete="off" placeholder="Enter Your Text" />
         <button type="submit">Send</button>
-      </form>
+</form>
 
-      <div class="result"></div>
+<div class="result"></div>
 
-      <div class="overlay"></div>
+<div class="overlay"></div>
 
-      <div class="todo-edit">
+<!-- EDIT MODAL -->
+<div class="todo-edit">
         <div class="head">
-          <h2>Todo Edit</h2>
-          <i class="bx bx-x close"></i>
+                <h2>Todo Edit</h2>
+                <i class="bx bx-x close"></i>
         </div>
         <form>
-          <label for="todo-edit">Todo Name:</label>
-          <div class="fields">
-            <input type="text" id="todo-edit" value="Hello" />
-            <button type="submit">Save</button>
-          </div>
+                <label for="todo-edit">Todo Name:</label>
+                <div class="fields">
+                        <input type="text" id="todo-edit" value="Hello" />
+                        <button type="submit">Save</button>
+                </div>
         </form>
-      </div>
+</div>
 
-      <div class="todo-remove">
+<!-- REMOVE MODAL -->
+<div class="todo-remove">
         <div class="head">
-          <h2>Todo Remove</h2>
-          <i class="bx bx-x close"></i>
+                <h2>Todo Remove</h2>
+                <i class="bx bx-x close"></i>
         </div>
         <div class="btns">
-          <button class="exit">Return</button>
-          <button class="remove">Remove</button>
+                <button class="exit">Return</button>
+                <button class="remove">Remove</button>
         </div>
-      </div>
+</div>
 
-      <p class="info">The Todo List Craeted Is <span>0</span></p>
-    </div>
-    <script src="assets/js/script.js"></script>
-  </body>
+<p class="info">The Todo List Created Is <span>0</span></p>
+
+</div>
+<!-- ============ END TODO APP ============ -->
+
+<script src="assets/js/script.js"></script>
+
+</body>
 </html>
